@@ -27,13 +27,12 @@ public class Server {
 
             // === Create feedback === //
 
-            // Version 1
-            clientSocket.getOutputStream().write("<H2>Hello</H2>".getBytes());
+           // Version 1
+           /*clientSocket.getOutputStream().write("<H2>Hello</H2>".getBytes());*/
 
             // Version 2
             OutputStreamWriter out = new OutputStreamWriter(clientSocket.getOutputStream());
-            out.write("<H2>From</H2>");
-            out.write("<H2>Server</H2>");
+            out.write("\r\n<H2>From</H2>\t<H2>Server</H2>\tYou are client #" + count);
             out.flush();
 
             // === Close All Connections === //
@@ -45,6 +44,7 @@ public class Server {
             clientSocket.close();
         }
 
+        // Close server socket
         if (!serverSocket.isClosed()) {
             serverSocket.close();
         }
